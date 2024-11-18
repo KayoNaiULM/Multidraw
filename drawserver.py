@@ -1,6 +1,5 @@
 import asyncio
 import websockets
-from IP import ip, port
 
 clients = set()
 
@@ -15,7 +14,7 @@ async def handler(websocket):
         clients.remove(websocket)
 
 async def main():
-    async with websockets.serve(handler, ip, port):
+    async with websockets.serve(handler, '0.0.0.0', 8099):
         await asyncio.Future()  # Run forever
 
 asyncio.run(main())
